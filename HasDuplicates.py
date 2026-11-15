@@ -3,18 +3,13 @@ import random
 
 #Main function
 #Takes alist as input, checks if the list has duplictes and returns True/False
-def hasDuplicates(list):
-  #make new dictionary
-  myMap = {}
-
-  #populate the dictionary by iterating over the list 
-  #prior to inserting in dictionary check if entry with set value already exists if so returen True
-  for i, value in enumerate(list):
-    key = value.__hash__()
-    if value == myMap.get(key):
+def hasDuplicates(values):
+  """Return whether an iterable of hashable values contains equal items."""
+  seen = set()
+  for value in values:
+    if value in seen:
       return True
-    else:
-      myMap[key] = value
+    seen.add(value)
   return False
 
 #Healper function to generate random list
@@ -32,4 +27,5 @@ def testDup():
     print(hasDuplicates(l_i))
 
 #call testing method
-testDup()
+if __name__ == '__main__':
+  testDup()
